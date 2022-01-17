@@ -82,10 +82,10 @@ namespace WebAppMvc
                 //1.yol
                 //endpoints.MapDefaultControllerRoute();
                 //2.yol
+                endpoints.MapAreaControllerRoute("admin", "admin", "admin/{controller=Manage}/{action=Index}/{id?}");
                 endpoints.MapControllerRoute(
                     name: "default",
-                    pattern: "{controller=Home}/{action=Index}/{id:int?}"
-                    );
+                    pattern: "{controller=Home}/{action=Index}/{id?}");
             });
         }
     }

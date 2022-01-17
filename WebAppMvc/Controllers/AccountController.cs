@@ -160,14 +160,15 @@ namespace WebAppMvc.Controllers
 
             if (result.Succeeded)
             {
-                await _emailSender.SendAsync(new EmailMessage()
-                {
-                    Contacts = new string[] { "abc@ww.com" },
-                    Body = $"{HttpContext.User.Identity.Name} Sisteme giriş yaptı!",
-                    Subject = $"Merhaba {HttpContext.User.Identity.Name}"
-                });
+                //await _emailSender.SendAsync(new EmailMessage()
+                //{
+                //    Contacts = new string[] { "abc@ww.com" },
+                //    Body = $"{HttpContext.User.Identity.Name} Sisteme giriş yaptı!",
+                //    Subject = $"Merhaba {HttpContext.User.Identity.Name}"
+                //});
 
-                return RedirectToAction("Index", "Home");
+                //return RedirectToAction("Index", "Home");
+                return RedirectToAction("Index", "Home", new { area = "" });
 
 
             }
@@ -175,6 +176,7 @@ namespace WebAppMvc.Controllers
             {
                 ModelState.AddModelError(string.Empty, "Kullanıcı adı veya şifre hatalı..");
                 return View(model);
+
             }
         }
 

@@ -3,7 +3,7 @@ using Iyzipay.Model;
 using Iyzipay.Request;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.Extensions.Configuration;
-using MUsefullMethods;
+using MUsefulMethods;
 using System;
 using System.Collections.Generic;
 using System.Globalization;
