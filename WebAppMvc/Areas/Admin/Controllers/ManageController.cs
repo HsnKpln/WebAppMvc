@@ -9,8 +9,16 @@ namespace WebAppMvc.Areas.Admin.Controllers
         {
             return View();
         }
+
+
+
         [AllowAnonymous]
         public IActionResult Login()
+        {
+            return View();
+        }
+
+        public IActionResult Users()
         {
             return View();
         }
