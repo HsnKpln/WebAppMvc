@@ -1,10 +1,10 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using System;
 
-namespace WebAppMvc.Models.Entities
+namespace WebAppMvc.ViewModels
 {
-    public class SubscriptionType : BaseEntity
+    public class SubscriptionTypeViewModel
     {
-        [Required,StringLength(50)]
+        public Guid Id { get; set; }
         public string Name { get; set; }
         public string Description { get; set; }
         public int Month { get; set; }

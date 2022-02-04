@@ -22,5 +22,9 @@ namespace WebAppMvc.Areas.Admin.Controllers
         {
             return View();
         }
+        public IActionResult Subscriptions()
+        {
+            return View();
+        }
     }
 }

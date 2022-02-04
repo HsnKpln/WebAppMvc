@@ -1,4 +1,5 @@
-﻿@{
+﻿@model List<SubscriptionTypeViewModel>
+@{
    ViewBag.Title = "Web mobil-4";
 }
 
@@ -12,3 +13,6 @@
 <h1>FENERBAHÇE</h1><br />
 <h1>FENERBAHÇE</h1><br />
 <h1>FENERBAHÇE</h1><br />
+@*<partial name="Partials/_PricePartial" model="Model"></partial>
+*@
+@await Component.InvokeAsync("PricingTable")

@@ -1,49 +1,42 @@
 ﻿using DevExtreme.AspNet.Data;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using Newtonsoft.Json;
 using System;
 using System.Linq;
-using Microsoft.AspNetCore.Http;
-using Microsoft.EntityFrameworkCore;
-using WebAppMvc.Extentions;
-using WebAppMvc.Views;
-using WebAppMvc.Models.Entities;
 using WebAppMvc.Data;
+using WebAppMvc.Extentions;
+using WebAppMvc.Models.Entities;
+using WebAppMvc.Views;
 
-namespace ItServiceApp.Areas.Admin.Controllers
-{
+namespace WebAppMvc.Areas.Admin.Controllers
+{    
     [Route("api/[controller]/[action]")]
-    public class AddressApiController : Controller
+    public class SubscriptionTypeApiController : Controller
     {
         private readonly MyContext _dbContext;
-
-        public AddressApiController(MyContext dbContext)
+        public SubscriptionTypeApiController(MyContext dbContext)
         {
             _dbContext = dbContext;
         }
-
-        #region Cruds
         [HttpGet]
-        public IActionResult Get(string userId, DataSourceLoadOptions options)
+        public IActionResult Get(DataSourceLoadOptions options)
         {
-            var data = _dbContext.Addresses
-                .Include(x => x.State)
-                .ThenInclude(x => x.City)
-                .Where(x => x.UserId == userId);
-
-            return Ok(DataSourceLoader.Load(data, options));
+            var data = _dbContext.subscriptionTypes;
+            return Ok(DataSourceLoader.Load(data,options));
         }
         [HttpGet]
-        public IActionResult Detail(Guid id, DataSourceLoadOptions loadOptions)
+        public IActionResult Detail(Guid id,DataSourceLoadOptions loadOptions)
         {
-            var data = _dbContext.Addresses.Where(x => x.Id == id);
+            var data = _dbContext.subscriptionTypes.Where(x => x.Id == id);
 
             return Ok(DataSourceLoader.Load(data, loadOptions));
         }
         [HttpPost]
         public IActionResult Insert(string values)
         {
-            var data = new Address();
+            var data = new SubscriptionType();
             JsonConvert.PopulateObject(values, data);
 
             if (!TryValidateModel(data))
@@ -52,23 +45,22 @@ namespace ItServiceApp.Areas.Admin.Controllers
                     IsSuccess = false,
                     ErrorMessage = ModelState.ToFullErrorString()
                 });
-            _dbContext.Addresses.Add(data);
+            _dbContext.subscriptionTypes.Add(data);
 
             var result = _dbContext.SaveChanges();
             if (result == 0)
                 return BadRequest(new JsonResponsiveViewModel
                 {
                     IsSuccess = false,
-                    ErrorMessage = "Yeni adres kaydedilemedi."
+                    ErrorMessage = "Yeni üyelik tipi kaydedilemedi."
                 });
             return Ok(new JsonResponsiveViewModel());
         }
         [HttpPut]
         public IActionResult Update(Guid key, string values)
         {
-            var data = _dbContext.Addresses
-                .Include(x => x.State.City)
-                .FirstOrDefault(x => x.Id == key);
+            var data = _dbContext.subscriptionTypes
+                .Find(key);
             if (data == null)
                 return BadRequest(new JsonResponsiveViewModel()
                 {
@@ -85,54 +77,23 @@ namespace ItServiceApp.Areas.Admin.Controllers
                 return BadRequest(new JsonResponsiveViewModel()
                 {
                     IsSuccess = false,
-                    ErrorMessage = "Adres güncellenemedi"
+                    ErrorMessage = "Yeni üyelik güncellenemedi"
                 });
             return Ok(new JsonResponsiveViewModel());
         }
         [HttpDelete]
         public IActionResult Delete(Guid key)
         {
-            var data = _dbContext.Addresses.Find(key);
+            var data = _dbContext.subscriptionTypes.Find(key);
             if (data == null)
-                return StatusCode(StatusCodes.Status409Conflict, "Adres bulunamadı");
+                return StatusCode(StatusCodes.Status409Conflict, "Yeni üyelik tipi bulunamadı");
 
-            _dbContext.Addresses.Remove(data);
+            _dbContext.subscriptionTypes.Remove(data);
 
             var result = _dbContext.SaveChanges();
             if (result == 0)
                 return BadRequest("Silme işlemi başarısız");
             return Ok(new JsonResponsiveViewModel());
-        }
-        #endregion
-
-        [HttpGet]
-        public object CityLookup(DataSourceLoadOptions loadOptions)
-        {
-            var data = _dbContext.Cities
-                .OrderBy(x => x.Id)
-                .Select(x => new
-                {
-                    id = x.Id,
-                    Value = x.Id,
-                    Text = $"{x.Name}"
-                });
-
-            return Ok(DataSourceLoader.Load(data, loadOptions));
-        }
-        [HttpGet]
-        public object StateLookup(DataSourceLoadOptions loadOptions)
-        {
-            var data = _dbContext.States
-                .OrderBy(x => x.Name)
-                .Select(x => new
-                {
-                    id = x.Id,
-                    Value = x.Id,
-                    Text = $"{x.Name}",
-                    CityId = x.CityId
-                });
-
-            return Ok(DataSourceLoader.Load(data, loadOptions));
         }
     }
 }
