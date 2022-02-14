@@ -5,10 +5,10 @@ using Microsoft.EntityFrameworkCore;
 using Newtonsoft.Json;
 using System;
 using System.Linq;
+using WebAppMvc.Core.Entities;
+using WebAppMvc.Core.ViewModels;
 using WebAppMvc.Data;
 using WebAppMvc.Extentions;
-using WebAppMvc.Models.Entities;
-using WebAppMvc.Views;
 
 namespace WebAppMvc.Areas.Admin.Controllers
 {    

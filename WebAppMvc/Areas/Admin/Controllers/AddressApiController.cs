@@ -6,9 +6,9 @@ using System.Linq;
 using Microsoft.AspNetCore.Http;
 using Microsoft.EntityFrameworkCore;
 using WebAppMvc.Extentions;
-using WebAppMvc.Views;
-using WebAppMvc.Models.Entities;
 using WebAppMvc.Data;
+using WebAppMvc.Core.ViewModels;
+using WebAppMvc.Core.Entities;
 
 namespace ItServiceApp.Areas.Admin.Controllers
 {

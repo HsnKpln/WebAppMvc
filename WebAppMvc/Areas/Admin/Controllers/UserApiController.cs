@@ -8,10 +8,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
+using WebAppMvc.Core.Identity;
+using WebAppMvc.Core.ViewModels;
 using WebAppMvc.Extentions;
-using WebAppMvc.Models.Identity;
-using WebAppMvc.ViewModels;
-using WebAppMvc.Views;
 
 namespace WebAppMvc.Areas.Admin.Controllers
 {

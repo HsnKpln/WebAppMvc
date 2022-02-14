@@ -8,10 +8,11 @@ using System.Text;
 using System.Text.Encodings.Web;
 using System.Threading.Tasks;
 using WebAppMvc.Extentions;
-using WebAppMvc.Models;
-using WebAppMvc.Models.Identity;
-using WebAppMvc.Services;
-using WebAppMvc.ViewModels;
+using WebAppMvc.Core.Entities;
+using WebAppMvc.Core.Identity;
+using WebAppMvc.Core.ViewModels;
+using WebAppMvc.Core.ComplexTypes;
+using WebAppMvc.Business.Services.Email;
 
 namespace WebAppMvc.Controllers
 {

@@ -1,8 +1,8 @@
 ﻿using AutoMapper;
 using Microsoft.AspNetCore.Mvc;
 using System.Linq;
+using WebAppMvc.Core.ViewModels;
 using WebAppMvc.Data;
-using WebAppMvc.ViewModels;
 
 namespace WebAppMvc.Components
 {

@@ -1,9 +1,10 @@
 ﻿using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using System;
+using WebAppMvc.Business.MapperProfiles;
+using WebAppMvc.Business.Services.Email;
+using WebAppMvc.Business.Services.Payment;
 using WebAppMvc.injectOrnek;
-using WebAppMvc.MapperProfiles;
-using WebAppMvc.Services;
 
 namespace WebAppMvc.Extentions
 {

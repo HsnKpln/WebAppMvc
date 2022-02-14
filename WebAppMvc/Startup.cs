@@ -14,12 +14,9 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
+using WebAppMvc.Core.Identity;
 using WebAppMvc.Data;
 using WebAppMvc.Extentions;
-using WebAppMvc.injectOrnek;
-using WebAppMvc.MapperProfiles;
-using WebAppMvc.Models.Identity;
-using WebAppMvc.Services;
 
 namespace WebAppMvc
 {

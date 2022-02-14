@@ -8,7 +8,6 @@ using System.Linq;
 using System.Threading.Tasks;
 using WebAppMvc.Data;
 using WebAppMvc.injectOrnek;
-using WebAppMvc.ViewModels;
 
 namespace WebAppMvc.Controllers
 {

@@ -10,13 +10,12 @@ using System.Globalization;
 using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
+using WebAppMvc.Business.Services.Payment;
+using WebAppMvc.Core.Identity;
+using WebAppMvc.Core.Payment;
+using WebAppMvc.Core.ViewModels;
 using WebAppMvc.Data;
 using WebAppMvc.Extentions;
-using WebAppMvc.Models;
-using WebAppMvc.Models.Identity;
-using WebAppMvc.Models.Payment;
-using WebAppMvc.Services;
-using WebAppMvc.ViewModels;
 
 namespace WebAppMvc.Controllers
 {
