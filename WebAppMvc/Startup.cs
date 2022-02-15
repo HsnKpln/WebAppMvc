@@ -58,6 +58,7 @@ namespace WebAppMvc
 
 
             services.AddApplicationServices(this.Configuration); //Burda kot kalabalýgý olmasýn diye buradakileri AppServices e tasýdýk sonrada burda çagýrdýk..
+            services.AddAppRepositories();
 
             services.AddControllersWithViews()
                 .AddNewtonsoftJson(

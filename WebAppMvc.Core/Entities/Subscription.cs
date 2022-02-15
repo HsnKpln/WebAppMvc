@@ -6,7 +6,7 @@ using static System.Net.Mime.MediaTypeNames;
 
 namespace WebAppMvc.Core.Entities
 {
-    public class Subscription :BaseEntity
+    public class Subscription :BaseEntity<Guid>
     {
 
         public Guid SubscriptionTypeId { get; set; }

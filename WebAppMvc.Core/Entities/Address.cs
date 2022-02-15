@@ -1,10 +1,11 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using System;
+using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using WebAppMvc.Core.Identity;
 
 namespace WebAppMvc.Core.Entities
 {
-    public class Address : BaseEntity
+    public class Address : BaseEntity<Guid>
     {
         public string Line { get; set; }
         public string PostCode { get; set; }
